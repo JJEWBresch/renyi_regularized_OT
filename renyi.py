@@ -576,15 +576,9 @@ def saverenyi(r, c, M, q, F, alp, lam, save, cut):
 
 #Squared Euclidean distance cost matrix
 def sqeuc_costs(n,scale):
-    M = np.zeros((n,n))
-    for i in range(n):
-        for j in range(n):
-            M[i,j]=(i/n - j/n)*(i/n - j/n)
-    return M*scale
+    indices = np.arange(n) / n
+    return scale * (indices[:, None] - indices[None, :])**2
 
 def euc_costs(n,scale):
-    M = np.zeros((n,n))
-    for i in range(n):
-        for j in range(n):
-            M[i,j]=np.sqrt((i/n - j/n)*(i/n - j/n))
-    return M*scale
+    indices = np.arange(n) / n
+    return scale * np.sqrt((indices[:, None] - indices[None, :])**2)
