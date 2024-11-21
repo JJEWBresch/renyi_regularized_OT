@@ -303,7 +303,7 @@ def SubGradDes(r, c, lam, alp, M, iter):
     
     return [q, F, qbest, qlist]
 
-####### DIRROR-DESCENT #######
+####### MIRROR-DESCENT #######
 
 def grad_entropy(X):
     return np.ln(X) - 1
