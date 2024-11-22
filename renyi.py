@@ -305,12 +305,6 @@ def SubGradDes(r, c, lam, alp, M, iter):
 
 ####### MIRROR-DESCENT #######
 
-def grad_entropy(X):
-    return np.ln(X) - 1
-
-def inv_grad_entropy(Q):
-    return np.exp(Q + 1)
-
 def grad_F_alp(P, M, alp, lam, r, c):
     R = rank1_prod(r,c)
     
