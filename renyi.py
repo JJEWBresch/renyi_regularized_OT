@@ -484,8 +484,8 @@ def KLprojMirrorDescentPolyak(alp,M,r,c,lam,precision,precision_sink,T,d1,B,cc):
             l = l+1
         
         ff = f_rec[int(k[l])] - d[l]
-        # eta = (new_score - ff)/(cc*np.linalg.norm(G)**2)
-        eta = (new_score - ff)/(cc*np.max(np.abs(G))**2)
+        eta = (new_score - ff)/(cc*np.linalg.norm(G)**2)
+        # eta = (new_score - ff)/(cc*np.max(np.abs(G))**2)
 
         tmp = np.exp(-eta*G)
         X = np.multiply(P,tmp)
