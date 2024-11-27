@@ -475,7 +475,7 @@ def KLprojMirrorDescentPolyak(alp,M,r,c,lam,precision,precision_sink,T,d1,B,cc):
 
             k[l+1] = counter
             sig = 0
-            d[l+1] = l
+            d[l+1] = d[l]
             l = l+1
         if sig > B:
             k[l+1] = counter
