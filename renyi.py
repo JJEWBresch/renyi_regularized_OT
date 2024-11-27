@@ -471,7 +471,7 @@ def KLprojMirrorDescentPolyak(alp,M,r,c,lam,precision,precision_sink,T,d1,B,cc):
         # Polyak step size calculations 
         f_rec[counter] = best_score
 
-        if alp_obj(alp, P, M, lam, r, c) <= f_rec[int(k[l])] + 1/2*d[l]:
+        if alp_obj(alp, P, M, lam, r, c) <= f_rec[int(k[l])] - 1/2*d[l]:
 
             k[l+1] = counter
             sig = 0
