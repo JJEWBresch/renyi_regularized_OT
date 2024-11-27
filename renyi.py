@@ -428,7 +428,7 @@ def KLprojMirrorDescentPolyak(alp,M,r,c,lam,precision,precision_sink,T,d1,B,cc):
     l=1
 
     d = np.zeros(2*T+1)
-    d[1] = d1
+    d = d1
 
     k = np.zeros(2*T+1)
     k[1] = 1
@@ -471,19 +471,18 @@ def KLprojMirrorDescentPolyak(alp,M,r,c,lam,precision,precision_sink,T,d1,B,cc):
         # Polyak step size calculations 
         f_rec[counter] = best_score
 
-        if alp_obj(alp, P, M, lam, r, c) <= f_rec[int(k[l])] - 1/2*d[l]:
+        if alp_obj(alp, P, M, lam, r, c) <= f_rec[int(k[l])] - 1/2*d:
 
             k[l+1] = counter
             sig = 0
-            d[l+1] = d[l]
             l = l+1
         if sig > B:
             k[l+1] = counter
             sig = 0
-            d[l+1] = 1/2*d[l]
+            d /= 2
             l = l+1
         
-        ff = f_rec[int(k[l])] - d[l]
+        ff = f_rec[int(k[l])] - d
         eta = (new_score - ff)/(cc*np.linalg.norm(G)**2)
         # eta = (new_score - ff)/(cc*np.max(np.abs(G))**2)
 
