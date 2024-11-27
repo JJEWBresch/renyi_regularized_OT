@@ -424,7 +424,7 @@ def KLprojMirrorDescent(alp,M,r,c,lam,precision, precision_sink,T , rate = None,
 
 def KLprojMirrorDescentPolyak(alp,M,r,c,lam,precision,precision_sink,T,d1,B,cc):
 
-    sig1=0
+    sig=0
     l=1
 
     d = np.zeros(2*T+1)
@@ -497,8 +497,8 @@ def KLprojMirrorDescentPolyak(alp,M,r,c,lam,precision,precision_sink,T,d1,B,cc):
         P = np.where(np.isnan(P)==True, 0, P)
         P = np.where(np.isinf(P)==True, 0, P)
 
-        # sig = sig + cc*eta*np.linalg.norm(G)
-        sig = sig + cc*eta*np.max(np.abs(G))
+        sig = sig + cc*eta*np.linalg.norm(G)
+        # sig = sig + cc*eta*np.max(np.abs(G))
 
         # Update score list
         new_score = alp_obj(alp, P, M, lam, r, c)
