@@ -20,9 +20,9 @@ def Sinkhorn(A,r,c,precision):
 
     while not (check_2(p,q,r,c,precision)) and count <= 4000:
         
-        A = np.diag(np.divide(r,p)).dot(A)
+        A = np.divide(r,p)[:, None] * A
         q = np.nansum(A,axis = 0)
-        A = A.dot(np.diag(np.divide(c,q)))
+        A = A * np.divide(c,q)[None, :]
         p = np.nansum(A,axis = 1)
         count+=1
     
@@ -35,9 +35,9 @@ def OneSinkhorn(A,r,c):
     p = np.nansum(A,axis = 1)
     q = np.nansum(A,axis = 0)
         
-    A = np.diag(np.divide(r,p)).dot(A)
+    A = np.divide(r,p)[:, None] * A
     q = np.nansum(A,axis = 0)
-    A = A.dot(np.diag(np.divide(c,q)))
+    A = A * np.divide(c,q)[None, :]
     p = np.nansum(A,axis = 1)
     
     return A
